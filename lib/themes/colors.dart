@@ -4,6 +4,7 @@ class AppColor {
   const AppColor();
   final white = const Color(0xFFFFFFFF);
   final bgPrimaryGreen = const Color(0xFF036049);
+  final bgAccentGreen = const Color(0x66AFE1D5);
   final txtPrimaryGreen = const Color(0xFF055B46);
   final txtPrimaryGray = const Color(0xFF605C5C);
   final inputBorderColor = const Color(0xD6044F3C);

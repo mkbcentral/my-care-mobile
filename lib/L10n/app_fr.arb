@@ -1,0 +1,10 @@
+{
+    "language":"Français",
+    "@language":{
+        "description":"Langue françaises"
+    },
+    "wellcome":"Soyez proche de votre hopita partout ou vous ête !",
+    "@language":{
+        "description":"Souhait"
+    }
+}

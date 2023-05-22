@@ -5,6 +5,7 @@ import 'package:my_care_mobile/themes/typography.dart';
 import 'package:my_care_mobile/views/auth/login_scrren.dart';
 import 'package:my_care_mobile/widgets/forms/auth_text_link.dart';
 import 'package:my_care_mobile/widgets/forms/button_primary.dart';
+import 'package:my_care_mobile/widgets/forms/inpu_radio.dart';
 import 'package:my_care_mobile/widgets/forms/input_form.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -21,6 +22,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final _passwordController = TextEditingController();
   final _passwordConfirmController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  UserTypeEnum? _userTypeEnum;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,6 +49,40 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     padding: const EdgeInsets.all(10.0),
                     child: Column(
                       children: [
+                        //Row for radio button
+                        Row(
+                          children: [
+                            InputFormRadio(
+                              title: UserTypeEnum.Patient.name,
+                              value: UserTypeEnum.Patient,
+                              onChange: (val) {
+                                setState(() {
+                                  _userTypeEnum = val;
+                                  print(_userTypeEnum!.name);
+                                });
+                              },
+                              userTypeEnum: _userTypeEnum,
+                            ),
+                            const SizedBox(
+                              width: 5,
+                            ),
+                            InputFormRadio(
+                              title: UserTypeEnum.Doctor.name,
+                              value: UserTypeEnum.Doctor,
+                              onChange: (val) {
+                                setState(() {
+                                  _userTypeEnum = val;
+                                  print(_userTypeEnum!.name);
+                                });
+                              },
+                              userTypeEnum: _userTypeEnum,
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 15,
+                        ),
+                        //Input for username
                         InpuForm(
                           icon: FontAwesomeIcons.user,
                           lableHint: "Nom d'utilisateur",
@@ -64,6 +100,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         const SizedBox(
                           height: 15,
                         ),
+                        //Input for Email Adresse
                         InpuForm(
                           icon: FontAwesomeIcons.envelope,
                           lableHint: 'Adresse mail',
@@ -81,6 +118,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         const SizedBox(
                           height: 15,
                         ),
+                        //Input for for phone number
                         InpuForm(
                           icon: FontAwesomeIcons.phone,
                           lableHint: 'N° Téléphone',
@@ -98,6 +136,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         const SizedBox(
                           height: 15,
                         ),
+                        //Input for parssword
                         InpuForm(
                           icon: FontAwesomeIcons.lock,
                           lableHint: 'Mot de passe',
@@ -115,6 +154,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         const SizedBox(
                           height: 15,
                         ),
+                        //Input for confirm password
                         InpuForm(
                           icon: FontAwesomeIcons.lock,
                           lableHint: 'Confirmer Mot de passe',
@@ -132,6 +172,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         const SizedBox(
                           height: 18,
                         ),
+                        //BUtton for register
                         ButtomPrimary(
                           label: 'Créer un compte',
                           onPressed: () {
@@ -147,6 +188,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         const SizedBox(
                           height: 18,
                         ),
+                        //Text link for login
                         AuthTextLink(
                           label: "Avez-vous déjà un compte ?",
                           labelLink: 'Se connecter',
