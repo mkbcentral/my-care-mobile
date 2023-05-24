@@ -13,3 +13,10 @@ TextStyle subTitle = GoogleFonts.abel(
     fontWeight: FontWeight.bold);
 TextStyle buttonLabel =
     GoogleFonts.lato(fontSize: 20, fontWeight: FontWeight.bold);
+TextStyle appBarTitle = GoogleFonts.dancingScript(
+    color: AppTheme.colors.white, fontWeight: FontWeight.bold, fontSize: 16);
+
+TextStyle paragraph = GoogleFonts.lato(
+    color: AppTheme.colors.txtPrimaryGray,
+    fontWeight: FontWeight.normal,
+    fontSize: 12);

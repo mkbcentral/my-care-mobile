@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:my_care_mobile/themes/app_theme.dart';
+import 'package:my_care_mobile/themes/typography.dart';
 
 class AuthTextLink extends StatelessWidget {
   final String label;
@@ -21,7 +23,7 @@ class AuthTextLink extends StatelessWidget {
             onPressed: onPressed,
             child: Text(
               labelLink,
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+              style: subTitle.copyWith(color: AppTheme.colors.txtPrimaryGray),
             ))
       ],
     );

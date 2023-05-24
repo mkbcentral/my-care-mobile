@@ -29,7 +29,7 @@ class InpuForm extends StatelessWidget {
       textInputAction: textInputAction,
       keyboardType: textInputType,
       decoration: InputDecoration(
-          contentPadding: const EdgeInsets.all(15),
+          contentPadding: const EdgeInsets.all(10),
           prefixIcon: Icon(
             icon,
             color: AppTheme.colors.inputIconColor,

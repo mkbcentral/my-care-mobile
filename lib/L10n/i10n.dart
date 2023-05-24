@@ -12,7 +12,7 @@ class L10n {
       case 'fr':
         return '🇫🇷 Français';
       case 'sw':
-        return '🇨🇩 SWahili';
+        return '🇨🇩 Swahili';
       case 'en':
         return '🇺🇸 Anglais';
       default:

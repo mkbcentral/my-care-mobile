@@ -17,16 +17,13 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  _SplashScreenState() {}
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Container(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.symmetric(horizontal: 40.0),
         width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
         decoration: const BoxDecoration(
           image: DecorationImage(
               image: AssetImage('assets/images/bg1.png'), fit: BoxFit.cover),
@@ -35,22 +32,16 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-                width: 280,
-                height: 280,
+                width: 200,
+                height: 200,
                 child: Image.asset("assets/images/il1.png")),
-            Text('My care health', style: headOne),
-            Padding(
-              padding: const EdgeInsets.only(left: 25, right: 25),
-              child: Text(AppLocalizations.of(context)!.wellcome,
-                  textAlign: TextAlign.center, style: subTitle),
-            ),
+            Text('My care', style: headOne),
+            Text(AppLocalizations.of(context)!.wellcome,
+                textAlign: TextAlign.center, style: subTitle),
             const SizedBox(
               height: 50,
             ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.0),
-              child: InputDropDown(),
-            ),
+            const InputDropDown(),
             const SizedBox(
               height: 50,
             ),

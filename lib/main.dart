@@ -3,8 +3,9 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:my_care_mobile/L10n/i10n.dart';
 import 'package:my_care_mobile/prviders/local_provider.dart';
 import 'package:my_care_mobile/themes/app_theme.dart';
-import 'package:my_care_mobile/views/splash_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:my_care_mobile/views/main_screen.dart';
+import 'package:my_care_mobile/views/splash_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() {
