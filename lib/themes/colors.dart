@@ -12,8 +12,13 @@ class AppColor {
   final inputBorderColor = const Color(0xD6044F3C);
   final inputIconColor = const Color(0xDF055B46);
 
+  final txtGray10 = const Color.fromARGB(255, 91, 149, 135);
+
   final labelCard1 = const Color(0xF8BDB7B7);
   final labelCard2 = const Color(0xFF66EED5);
   final bgCardRed = const Color(0xAC8C3125);
   final bgCardBleu = const Color(0xFF252F8C);
+
+  final bgPatienLineInfo1 = const Color(0xFFE1DFDF);
+  final bgPatienLineInfo2 = const Color(0xFFE8E8E8);
 }

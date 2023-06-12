@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:my_care_mobile/themes/app_theme.dart';
+import 'package:my_care_mobile/views/cabinet/cabinet_infos_screen.dart';
 import 'package:my_care_mobile/widgets/cards/card_cabinet_medical.dart';
 
 class ListCabinetScreen extends StatelessWidget {
@@ -18,11 +20,16 @@ class ListCabinetScreen extends StatelessWidget {
             drSpecialty: 'Pédiatrie',
             bgColor: AppTheme.colors.bgCardRed,
           ),
-          CardCabinetMedical(
-            logo: 'assets/images/ps.png',
-            drName: 'CHENG',
-            drSpecialty: 'Ophtalmologie',
-            bgColor: AppTheme.colors.bgCardBleu,
+          GestureDetector(
+            onTap: () {
+              Get.to(const CabinetInfosScreen(), transition: Transition.zoom);
+            },
+            child: CardCabinetMedical(
+              logo: 'assets/images/ps.png',
+              drName: 'CHENG',
+              drSpecialty: 'Ophtalmologie',
+              bgColor: AppTheme.colors.bgCardBleu,
+            ),
           )
         ],
       ),

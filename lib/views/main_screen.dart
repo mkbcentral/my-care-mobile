@@ -1,14 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
+import 'package:my_care_mobile/configs/basic_ui/snackbar.dart';
+import 'package:my_care_mobile/features/user/user_feature.dart';
 import 'package:my_care_mobile/themes/app_theme.dart';
 import 'package:my_care_mobile/themes/typography.dart';
 import 'package:my_care_mobile/views/cabinet/list_cabinet_screen.dart';
 import 'package:my_care_mobile/views/hospital/list_hospitals.dart';
+import 'package:my_care_mobile/views/loading/loading_screen.dart';
 import 'package:my_care_mobile/views/patient/patient_id_screen.dart';
+import 'package:my_care_mobile/widgets/ui/custom_dialog.dart';
+import 'package:my_care_mobile/widgets/user/edit_user_profile.dart';
 
-class MainScree extends StatelessWidget {
-  const MainScree({super.key});
+class MainScreen extends StatefulWidget {
+  const MainScreen({super.key});
 
+  @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -22,21 +32,45 @@ class MainScree extends StatelessWidget {
             style: appBarTitle,
           ),
           actions: [
-            Container(
-              decoration: BoxDecoration(
-                  color: AppTheme.colors.white,
-                  borderRadius: BorderRadius.circular(50)),
-              width: 30,
-              height: 30,
-              //child: const CircleAvatar(
-              //backgroundImage: AssetImage('assets/images/u.jpg')),
+            GestureDetector(
+              onTap: () {
+                Get.to(() => const EditUserProfile(),
+                    transition: Transition.leftToRight,
+                    duration: const Duration(seconds: 1));
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                    color: AppTheme.colors.white,
+                    borderRadius: BorderRadius.circular(50)),
+                width: 30,
+                height: 30,
+                child: const CircleAvatar(
+                    backgroundImage: AssetImage('assets/images/u.jpg')),
+              ),
             ),
             const SizedBox(
               width: 10,
             ),
-            const Icon(
-              FontAwesomeIcons.ellipsisVertical,
-            ),
+            IconButton(
+                onPressed: () async {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return const ConfirmationDialog(
+                          labelQuestion:
+                              "Voulez-vous vraiment vous déconnecter ?",
+                          labelCancelBtn: "Annuler",
+                          labelConfirmBtn: "Se déconnecter");
+                    },
+                  ).then((value) {
+                    if (value != null && value) {
+                      logout();
+                      showSnackBar(context, 'Your are logout');
+                      Get.to(const LoadingScreen(),transition: Transition.fadeIn);
+                    }
+                  });
+                },
+                icon: const Icon(Icons.logout)),
             const SizedBox(
               width: 10,
             ),

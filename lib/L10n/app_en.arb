@@ -3,5 +3,41 @@
     "@language":{
         "description":"The English language"
     },
-    "wellcome":"Be close to your hospital wherever you are!"
+    "wellcome":"Be close to your hospital wherever you are!",
+    "login":"Login",
+    "@language":{
+        "description":"Login"
+    },
+    "emailorphone":"Email or phone",
+    "@language":{
+        "description":"Adresse email ou numéro téléphone"
+    },
+    "password":"Password",
+    "@language":{
+        "description":"Password"
+    },
+    "or":"Or",
+    "@language":{
+        "description":"Or conjonction"
+    },
+    "signup":"Create an account",
+    "@language":{
+        "description":"Create an account"
+    },
+    "username":"username",
+    "@language":{
+        "description":"Username"
+    },
+    "passwordcomfirm":"Password Confirmation",
+    "@language":{
+        "description":"Password confirmation"
+    },
+    "email":"Email adress",
+    "@language":{
+        "description":"Adresse email"
+    },
+    "phone":"Phone number",
+    "@language":{
+        "description":"Phone number"
+    }
 }

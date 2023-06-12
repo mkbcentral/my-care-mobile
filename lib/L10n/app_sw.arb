@@ -3,5 +3,41 @@
     "@language":{
         "description":"lugha ya kiswahili"
     },
-    "wellcome":"Kuwa karibu na hospitali yako popote ulipo!"
+    "wellcome":"Kuwa karibu na hospitali yako popote ulipo!",
+    "login":"Ili kuingiy",
+    "@language":{
+        "description":"Se connecter"
+    },
+    "emailorphone":"Email adress au Simu",
+    "@language":{
+        "description":"Adresse email ou numéro téléphone"
+    },
+    "password":"Neno siri",
+    "@language":{
+        "description":"Mot de password"
+    },
+    "or":"Au",
+    "@language":{
+        "description":"Ou conjonction"
+    },
+    "signup":"Fungua akaunti",
+    "@language":{
+        "description":"Créer un compte"
+    },
+    "username":"Jina la mtumiaji",
+    "@language":{
+        "description":"Nom d'utilisateur"
+    },
+    "passwordcomfirm":"Thibitisha nenosiri",
+    "@language":{
+        "description":"Confirmation du mot de password"
+    },
+    "email":"Email adress",
+    "@language":{
+        "description":"Adresse email"
+    },
+    "phone":"Nambari ya simu",
+    "@language":{
+        "description":"Nambari ya simu"
+    }
 }

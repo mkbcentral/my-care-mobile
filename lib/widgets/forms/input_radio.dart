@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_care_mobile/themes/app_theme.dart';
 
+// ignore: constant_identifier_names
 enum UserTypeEnum { Patient, Doctor }
 
 class InputFormRadio extends StatelessWidget {

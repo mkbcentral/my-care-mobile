@@ -12,7 +12,7 @@ TextStyle subTitle = GoogleFonts.abel(
     fontSize: 20.0,
     fontWeight: FontWeight.bold);
 TextStyle buttonLabel =
-    GoogleFonts.lato(fontSize: 20, fontWeight: FontWeight.bold);
+    GoogleFonts.lato(fontSize: 18, fontWeight: FontWeight.bold);
 TextStyle appBarTitle = GoogleFonts.dancingScript(
     color: AppTheme.colors.white, fontWeight: FontWeight.bold, fontSize: 16);
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:my_care_mobile/themes/app_theme.dart';
 import 'package:my_care_mobile/themes/typography.dart';
-import 'package:my_care_mobile/widgets/forms/button_primar_icon.dart';
+import 'package:my_care_mobile/widgets/forms/button_primary_icon.dart';
 
 class PatientIdScreen extends StatelessWidget {
   const PatientIdScreen({super.key});

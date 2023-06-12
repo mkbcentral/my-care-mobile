@@ -9,6 +9,7 @@ class InpuForm extends StatelessWidget {
   final String? Function(String?)? validator;
   final TextInputAction textInputAction;
   final TextInputType textInputType;
+  final double sizeRaduis;
   const InpuForm({
     required this.icon,
     required this.lableHint,
@@ -17,6 +18,7 @@ class InpuForm extends StatelessWidget {
     required this.validator,
     required this.textInputAction,
     required this.textInputType,
+    required this.sizeRaduis,
     super.key,
   });
 
@@ -33,6 +35,7 @@ class InpuForm extends StatelessWidget {
           prefixIcon: Icon(
             icon,
             color: AppTheme.colors.inputIconColor,
+            size: 16,
           ),
           hintText: lableHint,
           focusedBorder: OutlineInputBorder(
@@ -40,7 +43,7 @@ class InpuForm extends StatelessWidget {
               borderRadius: BorderRadius.circular(20)),
           border: OutlineInputBorder(
               borderSide: BorderSide(color: AppTheme.colors.inputBorderColor),
-              borderRadius: BorderRadius.circular(20))),
+              borderRadius: BorderRadius.circular(sizeRaduis))),
     );
   }
 }

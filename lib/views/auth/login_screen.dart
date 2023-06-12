@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:my_care_mobile/themes/app_theme.dart';
+import 'package:get/get.dart';
+import 'package:my_care_mobile/configs/basic_ui/snackbar.dart';
+import 'package:my_care_mobile/configs/constaints/api_response_constants.dart';
+import 'package:my_care_mobile/features/auth/authentification_feature.dart';
+import 'package:my_care_mobile/models/user_model.dart';
 import 'package:my_care_mobile/themes/typography.dart';
 import 'package:my_care_mobile/views/auth/register_screen.dart';
 import 'package:my_care_mobile/views/main_screen.dart';
 import 'package:my_care_mobile/widgets/forms/auth_text_link.dart';
 import 'package:my_care_mobile/widgets/forms/button_primary.dart';
 import 'package:my_care_mobile/widgets/forms/input_form.dart';
+import 'package:my_care_mobile/themes/size.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -19,12 +26,38 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _loginController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  bool isLoading = false;
+  void _login() async {
+    ApiResponse apiResponse =
+        await login(_loginController.text, _passwordController.text);
+    if (apiResponse.error == null) {
+      _saveAndRedirectToHome(apiResponse.data as User);
+      setState(() {
+        isLoading = !isLoading;
+      });
+    } else {
+      // ignore: use_build_context_synchronously
+      showSnackBar(context, '${apiResponse.error}');
+      setState(() {
+        isLoading = !isLoading;
+      });
+    }
+  }
+
+  void _saveAndRedirectToHome(User user) async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    preferences.setString("token", user.accessToken ?? '');
+    preferences.setInt('userId', user.id ?? 0);
+    Get.to(() => const MainScreen(),
+        transition: Transition.fadeIn, duration: const Duration(seconds: 1));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         resizeToAvoidBottomInset: false,
         body: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 30),
+          padding: EdgeInsets.symmetric(horizontal: p2 + 10),
           width: MediaQuery.of(context).size.width,
           decoration: const BoxDecoration(
             image: DecorationImage(
@@ -34,8 +67,8 @@ class _LoginScreenState extends State<LoginScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text('My care', style: headOne),
-              const SizedBox(
-                height: 15,
+              SizedBox(
+                height: s1 - 85,
               ),
               Form(
                 key: _formKey,
@@ -43,7 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     InpuForm(
                       icon: FontAwesomeIcons.user,
-                      lableHint: 'Email ou N° Tél',
+                      lableHint: AppLocalizations.of(context)!.emailorphone,
                       controller: _loginController,
                       isObscure: false,
                       validator: (value) {
@@ -54,13 +87,14 @@ class _LoginScreenState extends State<LoginScreen> {
                       },
                       textInputAction: TextInputAction.next,
                       textInputType: TextInputType.text,
+                      sizeRaduis: 20.0,
                     ),
-                    const SizedBox(
-                      height: 15,
+                    SizedBox(
+                      height: s1 - 85,
                     ),
                     InpuForm(
                       icon: FontAwesomeIcons.lock,
-                      lableHint: 'Mot de passe',
+                      lableHint: AppLocalizations.of(context)!.password,
                       controller: _passwordController,
                       isObscure: true,
                       validator: (value) {
@@ -71,40 +105,38 @@ class _LoginScreenState extends State<LoginScreen> {
                       },
                       textInputAction: TextInputAction.done,
                       textInputType: TextInputType.visiblePassword,
+                      sizeRaduis: s1 - 80,
                     ),
-                    const SizedBox(
-                      height: 18,
+                    SizedBox(
+                      height: s1 - 82,
                     ),
-                    ButtomPrimary(
-                      label: 'Se connecter',
-                      onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                            content: const Text('Data passed'),
-                            backgroundColor: AppTheme.colors.bgPrimaryGreen,
-                          ));
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const MainScree()));
-                        }
-                      },
+                    isLoading
+                        ? const CircularProgressIndicator.adaptive()
+                        : ButtomPrimary(
+                            label: AppLocalizations.of(context)!.login,
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                                setState(() {
+                                  isLoading = !isLoading;
+                                  _login();
+                                });
+                              }
+                            },
+                          ),
+                    SizedBox(
+                      height: s1 - 90,
                     ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    const Text('Ou'),
-                    const SizedBox(
-                      height: 10,
+                    Text(AppLocalizations.of(context)!.or),
+                    SizedBox(
+                      height: s1 - 90,
                     ),
                     AuthTextLink(
                       label: "",
-                      labelLink: 'Créer un compte',
+                      labelLink: AppLocalizations.of(context)!.signup,
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const RegisterScreen()));
+                        Get.to(() => const RegisterScreen(),
+                            transition: Transition.rightToLeft,
+                            duration: const Duration(seconds: 1));
                       },
                     )
                   ],

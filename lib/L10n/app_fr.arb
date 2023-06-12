@@ -6,5 +6,41 @@
     "wellcome":"Soyez proche de votre hopita partout ou vous ête !",
     "@language":{
         "description":"Souhait"
+    },
+    "login":"Se connecter",
+    "@language":{
+        "description":"Se connecter"
+    },
+    "emailorphone":"Email ou Tél",
+    "@language":{
+        "description":"Adresse email ou numéro téléphone"
+    },
+    "password":"Mot de passe",
+    "@language":{
+        "description":"Mot de password"
+    },
+    "or":"Ou",
+    "@language":{
+        "description":"Ou conjonction"
+    },
+    "signup":"Créer un compte",
+    "@language":{
+        "description":"Créer un compte"
+    },
+    "username":"Nom d'utilisateur",
+    "@language":{
+        "description":"Nom d'utilisateur"
+    },
+    "passwordcomfirm":"Confirmer le mot  de passe",
+    "@language":{
+        "description":"Confirmation du mot de password"
+    },
+    "email":"Adresse email",
+    "@language":{
+        "description":"Adresse email"
+    },
+    "phone":"Numéro Tél",
+    "@language":{
+        "description":"Numero de téléphone"
     }
 }
